@@ -1,8 +1,17 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module.js';
+import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(process.env.PORT ?? 3000);
+
+  app.setGlobalPrefix('api/v1');
+  app.enableShutdownHooks();
+
+  const config = app.get(ConfigService);
+
+  const port = config.getOrThrow<number>('DB_PORT');
+
+  await app.listen(port);
 }
 await bootstrap();
