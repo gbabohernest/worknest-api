@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { EnvSchema } from './config/env.schema.js';
 import { DbConfigModule } from './config/db-config.module.js';
+import { UsersModule } from './users/users.module.js';
 
 @Module({
   imports: [
@@ -11,6 +12,7 @@ import { DbConfigModule } from './config/db-config.module.js';
       validate: (config) => EnvSchema.parse(config),
     }),
     DbConfigModule,
+    UsersModule,
   ],
   controllers: [],
   providers: [],
