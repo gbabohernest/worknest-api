@@ -8,11 +8,11 @@ import { ConfigService } from '@nestjs/config';
       useFactory: (config: ConfigService) => ({
         type: 'mysql',
 
-        host: config.getOrThrow('DB_HOST'),
-        port: config.getOrThrow('DB_PORT'),
-        username: config.getOrThrow('DB_USERNAME'),
-        password: config.getOrThrow('DB_PASSWORD'),
-        database: config.getOrThrow('DB_NAME'),
+        host: config.getOrThrow('MYSQL_HOST'),
+        port: config.getOrThrow('MYSQL_PORT'),
+        username: config.getOrThrow('MYSQL_USERNAME'),
+        password: config.getOrThrow('MYSQL_PASSWORD'),
+        database: config.getOrThrow('MYSQL_DATABASE'),
 
         autoLoadEntities: true,
 
